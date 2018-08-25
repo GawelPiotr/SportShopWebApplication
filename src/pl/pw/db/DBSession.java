@@ -9,8 +9,6 @@ import org.hibernate.cfg.Configuration;
 
 import javax.persistence.metamodel.EntityType;
 
-import java.util.Map;
-
 public class DBSession {
     private static final SessionFactory ourSessionFactory;
 
