@@ -78,5 +78,9 @@ public class Main {
 
         System.out.println("Export OK");
 
+        Product product = new Product();
+        StoreRepository storeRepository = new StoreRepository();
+        System.out.println(storeRepository.getAll());
+
     }
 }
