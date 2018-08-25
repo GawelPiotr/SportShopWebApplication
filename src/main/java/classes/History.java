@@ -1,6 +1,7 @@
 package classes;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,11 +17,17 @@ public class History {
     private Integer product_id;
     @Column
     private Integer quantity;
+    @OneToOne
+    @JoinColumn(columnDefinition = "product_id")
+    private Product bought;
 
     public History(Integer client_id, Integer product_id, Integer quantity) {
         this.client_id = client_id;
         this.product_id = product_id;
         this.quantity = quantity;
+    }
+
+    public History() {
     }
 
     public Integer getTransactions_id() {

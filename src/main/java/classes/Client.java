@@ -15,8 +15,12 @@ public class Client {
     private String nick;
 
 
-    public Client(String nick) {
+    public Client(Integer client_id, String nick) {
+        this.client_id = client_id;
         this.nick = nick;
+    }
+
+    public Client() {
     }
 
 

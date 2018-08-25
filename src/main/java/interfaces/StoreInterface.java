@@ -10,7 +10,7 @@ public interface StoreInterface {
 
     List<Product> getAll();
     List<Product> getByType(String type);
-    List<Product> GetProductByClientId(Integer id_client );
+    List<Product> getProductByClientId(Integer id_client );
     Client getClientByNick(String nick);
     void saveClient(Client client);
     void saveProduct(Product product);
