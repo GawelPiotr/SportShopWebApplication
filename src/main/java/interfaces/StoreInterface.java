@@ -1,5 +1,8 @@
-package pl.pw.db;
+package interfaces;
 
+
+import classes.Client;
+import classes.Product;
 
 import java.util.List;
 

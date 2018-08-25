@@ -1,4 +1,4 @@
-package pl.pw.db;
+package classes;
 
 public class Product {
 }
