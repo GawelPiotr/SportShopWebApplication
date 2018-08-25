@@ -1,4 +1,4 @@
-package main.java.classes;
+package classes;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
