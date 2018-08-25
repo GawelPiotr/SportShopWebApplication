@@ -1,4 +1,4 @@
 package main.java.interfaces;
 
-public class StoreInterface {
+public interface StoreInterface {
 }
