@@ -81,11 +81,9 @@
                 <div class="col-sm-8 text-left">
                 <h1>Contact</h1>
                 <table>
-                    <tr>
-                        <td>Best Sport Shop</td>
-                        <td>Your sport shop in internet</td>
-                        <td>www.BSS.com</td>
-                    </tr>
+                    <tr>Best Sport Shop - </tr>
+                    <tr>Your sport shop in internet</tr>
+                    <tr> www.BSS.com</tr>
                 </table>
                 <hr>
             </div>

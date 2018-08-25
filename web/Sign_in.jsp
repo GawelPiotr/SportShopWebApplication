@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="Sign_in.jsp">Logo</a>
+            <a class="navbar-brand" href="index.jsp">Best Sport Shop</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -91,8 +91,11 @@
         </tr>
 
     </table>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary"><a href="Admin_SignIn.jsp">Admin Login</a></button>
+    <div class="container">
+        <div class="btn-group">
+            <A href="Admin_SignIn.jsp"><button type="button" class="btn btn-primary">Admin Login</button> </A>
+        </div>
+    </div>
     </div>
 </form>
 </body>

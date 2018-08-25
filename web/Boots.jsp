@@ -51,7 +51,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="Sign_in.jsp">Logo</a>
+            <a class="navbar-brand" href="index.jsp">Best Sport Shop</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -69,5 +69,8 @@
         </div>
     </div>
 </nav>
+<footer class="container-fluid text-center">
+    <p>Footer Text</p>
+</footer>
 </body>
 </html>

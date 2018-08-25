@@ -43,7 +43,10 @@
           </style>
       </head>
   <body>
-
+  <div class="jumbotron text-center">
+      <h1>Best Sport Shop </h1>
+      <p>Your Best Sport Shop!</p>
+  </div>
   <nav class="navbar navbar-inverse">
       <div class="container-fluid">
           <div class="navbar-header">
@@ -52,7 +55,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="Sign_in.jsp">Logo</a>
+              <a class="navbar-brand" href="index.jsp">Best Sport Shop</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav">
@@ -70,5 +73,30 @@
           </div>
       </div>
   </nav>
+  <footer class="container-fluid text-center">
+      <p>Team Work:</p>
+      <table>
+          <tr>
+              <td>      Piotr Gaweł - github/piotrgawel
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  Tomasz Prasny - github/prasny
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  Diana Januszczyk - github/Yadanek
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  Daniel Czarnocki - github/DanielCzarnocki
+              </td>
+          </tr>
+
+      </table>
+  </footer>
   </body>
 </html>
