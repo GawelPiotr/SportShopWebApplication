@@ -1,4 +1,4 @@
-package main.java.classes;
+package classes;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -20,6 +20,9 @@ public class History {
         this.client_id = client_id;
         this.product_id = product_id;
         this.quantity = quantity;
+    }
+
+    public History() {
     }
 
     public Integer getTransactions_id() {

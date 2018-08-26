@@ -1,4 +1,4 @@
-package main.java.classes;
+package classes;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -15,6 +15,9 @@ public class Client {
 
     public Client(String nick) {
         this.nick = nick;
+    }
+
+    public Client() {
     }
 
 

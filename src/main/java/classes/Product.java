@@ -1,4 +1,4 @@
-package main.java.classes;
+package classes;
 
 
 import javax.persistence.*;
@@ -8,11 +8,12 @@ import java.util.Objects;
 @Table
 public class Product {
 
+    public Product() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
-    @Column
-    private String name;
     @Column
     private String type;
     @Column
@@ -24,8 +25,7 @@ public class Product {
     @Column
     private Integer reserved;
 
-    public Product(String name, String type, String colour, Integer size, Integer quantity, Integer reserved) {
-        this.name = name;
+    public Product(String type, String colour, Integer size, Integer quantity, Integer reserved) {
         this.type = type;
         this.colour = colour;
         this.size = size;
@@ -39,14 +39,6 @@ public class Product {
 
     public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getType() {
@@ -95,7 +87,6 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Objects.equals(product_id, product.product_id) &&
-                Objects.equals(name, product.name) &&
                 Objects.equals(type, product.type) &&
                 Objects.equals(colour, product.colour) &&
                 Objects.equals(size, product.size) &&
@@ -106,14 +97,13 @@ public class Product {
     @Override
     public int hashCode() {
 
-        return Objects.hash(product_id, name, type, colour, size, quantity, reserved);
+        return Objects.hash(product_id, type, colour, size, quantity, reserved);
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "product_id=" + product_id +
-                ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", colour='" + colour + '\'' +
                 ", size=" + size +
