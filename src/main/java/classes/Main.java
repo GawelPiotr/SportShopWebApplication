@@ -53,6 +53,7 @@ public class Main {
 
         storeRepository.setReservedById(1, 5);
         System.out.println(storeRepository.getReservedById(1));
+        System.out.println(storeRepository.getProductByClientId(2));
 
     }
 }

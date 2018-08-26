@@ -6,6 +6,7 @@ import java.util.Objects;
 @Entity
 @Table
 public class History {
+    //TODO dodać pole "date"
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

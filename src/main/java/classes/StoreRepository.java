@@ -39,7 +39,7 @@ public class StoreRepository implements StoreInterface {
 
     public List<Product> getProductByClientId(Integer clientId) {
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            Query<Product> query = session.createQuery("select p from History h join Product p where h.clientId = :myClientId ", Product.class);
+            Query<Product> query = session.createQuery("select p from History h join Product p where h.clientId = :myClientId AND h.productId = p.productId", Product.class);
             query.setParameter("myClientId", clientId);
             return query.list();
         } catch (Throwable e) {
