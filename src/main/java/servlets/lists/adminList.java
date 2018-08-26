@@ -1,4 +1,4 @@
-package servlets;
+package servlets.lists;
 
 import classes.Product;
 import classes.StoreRepository;
@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/pants")
-public class listOfPants extends HttpServlet {
+@WebServlet(urlPatterns = "/admin")
+public class adminList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StoreRepository storeRepository = new StoreRepository();
-        List<Product> pantsList = storeRepository.getByType("pants");
+        List<Product> adminList = storeRepository.getAllProducts();
 
-        req.setAttribute("pantsList", pantsList);
+        req.setAttribute("list", adminList);
 
-        RequestDispatcher dd = req.getRequestDispatcher("/pants.jsp");
+        RequestDispatcher dd = req.getRequestDispatcher("/restricted/admin.jsp");
         dd.forward(req,resp);
     }
 }

@@ -1,4 +1,4 @@
-package servlets;
+package servlets.lists;
 
 import classes.Product;
 import classes.StoreRepository;
@@ -29,7 +29,7 @@ public class listOfAllProducts extends HttpServlet {
     private void setAllProductsToVariables(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StoreRepository storeRepository = new StoreRepository();
         List<Product> allProductsList = storeRepository.getAllProducts();
-        req.setAttribute("allProductsList", allProductsList);
+        req.setAttribute("list", allProductsList);
 
         RequestDispatcher dd = req.getRequestDispatcher("/index.jsp");
         dd.forward(req, resp);
