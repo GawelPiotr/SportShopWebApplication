@@ -32,11 +32,10 @@ public class StoreRepository implements StoreInterface {
     @Override
     public List<Product> getProductByType(String type) {
         Transaction transaction = null;
-        String string = new String();
-        string = "SELECT c FROM Product c WHERE c.type = " + type;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<Product> query = session.createQuery(string, Product.class);
+            Query<Product> query = session.createQuery("select c from Product c where c.type = :typeName", Product.class);
+            query.setParameter("typeName", type);
             List<Product> list = query.list();
             transaction.commit();
             transaction = null;
@@ -56,7 +55,8 @@ public class StoreRepository implements StoreInterface {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<Product> query = session.createQuery("select c from Product c where c.id = " + id, Product.class);
+            Query<Product> query = session.createQuery("select c from Product c where c.id = :idName", Product.class);
+            query.setParameter("idName", id);
             List<Product> list = query.list();
             transaction.commit();
             transaction = null;
@@ -76,7 +76,8 @@ public class StoreRepository implements StoreInterface {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<Client> query = session.createQuery("select c from Client c where c.nick = " + nick, Client.class);
+            Query<Client> query = session.createQuery("select c from Client c where c.nick = :nickName", Client.class);
+            query.setParameter("nickName", nick);
             Client client = query.getSingleResult();
             transaction.commit();
             transaction = null;
@@ -145,10 +146,11 @@ public class StoreRepository implements StoreInterface {
     @Override
     public void addProductQuantityById(Integer productId, Integer quantity) {
         Transaction transaction = null;
-        String string = "UPDATE Product SET " + quantity + " WHERE product_id= " + productId;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.createQuery(string);
+            Query<Product> query = session.createQuery("UPDATE Product SET quantity = :quantityName WHERE productId = :productIdName", Product.class);
+            query.setParameter("quantityName", quantity);
+            query.setParameter("productIdName", productId);
             transaction.commit();
             transaction = null;
         } catch (Throwable e) {
@@ -163,10 +165,11 @@ public class StoreRepository implements StoreInterface {
     @Override
     public void setReservedById(Integer productId, Integer reservedValue) {
         Transaction transaction = null;
-        String string = "UPDATE Product SET " + reservedValue + " WHERE product_id= " + productId;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.createQuery(string);
+            Query<Product> query = session.createQuery("UPDATE Product SET reserved = :reservedValueName WHERE productId = :productIdName", Product.class);
+            query.setParameter("reservedValueName", reservedValue);
+            query.setParameter("productIdName", productId);
             transaction.commit();
             transaction = null;
         } catch (Throwable e) {
@@ -183,7 +186,8 @@ public class StoreRepository implements StoreInterface {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<History> query = session.createQuery("select c from History c WHERE client_id = " + clientId, History.class);
+            Query<History> query = session.createQuery("select c from History c WHERE clientId = :clientIdName", History.class);
+            query.setParameter("clientIdName", clientId);
             List<History> list = query.list();
             transaction.commit();
             transaction = null;

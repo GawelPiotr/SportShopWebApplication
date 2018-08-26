@@ -8,21 +8,21 @@ import java.util.List;
 
 public interface StoreInterface {
 
-    List<Product> getAllProducts();
+    List<Product> getAllProducts();                                                 //OK
 
-    List<Product> getProductByType(String type);
+    List<Product> getProductByType(String type);                                    //OK
 
-    List<Product> getProductByClientId(Integer id);
+    List<Product> getProductByClientId(Integer id);                                 //FAULT
 
-    Client getClientByNick(String nick);
+    Client getClientByNick(String nick);                                            //OK
 
-    void saveClient(Client client);
+    void saveClient(Client client);                                                 //OK
 
-    void saveProduct(Product product);
+    void saveProduct(Product product);                                              //OK
 
-    void saveHistoryEntry(History history);
+    void saveHistoryEntry(History history);                                         //OK
 
-    void addProductQuantityById(Integer productId, Integer quantity);
+    void addProductQuantityById(Integer productId, Integer quantity);               //
 
     void setReservedById(Integer productId, Integer reservedValue);
 

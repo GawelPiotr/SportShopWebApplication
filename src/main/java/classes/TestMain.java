@@ -28,22 +28,31 @@ public class TestMain {
         product2.setQuantity(18);
         product2.setReserved(0);
         storeRepository.saveProduct(product2);
+
         //saveClient1
         client1.setNick("Zenon");
         storeRepository.saveClient(client1);
+
         //saveClient2
         client2.setNick("Hiaca");
         storeRepository.saveClient(client2);
 
         //saveHistoryEntry
-        history1.setProduct_id(1);
-        history1.setClient_id(2);
+        history1.setProductId(1);
+        history1.setClientId(2);
         history1.setQuantity(8);
         storeRepository.saveHistoryEntry(history1);
 
+        //setProductQuantity
+        //storeRepository.addProductQuantityById(1,56);
+
+        storeRepository.setReservedById(1, 9);
+
         //System.out.println(storeRepository.getAllProducts());
 
-        System.out.println(storeRepository.getProductByType("Shirt"));
+        //System.out.println(storeRepository.getProductByType("Shirt"));
+
+        //System.out.println(storeRepository.getClientByNick("Zenon"));
 
 
     }
