@@ -10,7 +10,7 @@
 <p><a href="/shirts">Shirts</a></p>
 <p><a href="/pants">Pants</a></p>
 <p><a href="/boots">Boots</a></p>
-<p><a href="/basket.jsp">Boots</a></p>
+<p><a href="/basket.jsp">Basket</a></p>
 <table border="1">
     <tr>
         <th>ID</th>
