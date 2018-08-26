@@ -1,0 +1,12 @@
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'shirt');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'shirt');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'shirt');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'shirt');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');
+INSERT INTO product (colour, quantity, reserved, size, type) VALUES ('red', 100, 50, 99, 'koszula');

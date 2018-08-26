@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/basket")
-public class addToBasket extends HttpServlet {
+public class AddToBasket extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,9 +25,9 @@ public class addToBasket extends HttpServlet {
         }
         StoreRepository storeRepository = new StoreRepository();
         Integer productId = Integer.parseInt(req.getParameter("productIdToBuy"));
-        Product product = storeRepository.getProductById(productId);
+        Product product = storeRepository.getProductByProductId(productId).get(); //TODO optional handle
         Integer quantityToReserve = Integer.parseInt(req.getParameter("quantityToBuy"));
-        Integer actuallyReservedQuantity = storeRepository.getReservedById(productId);
+        Integer actuallyReservedQuantity = storeRepository.getReservedById(productId).get(); //TODO optional handle
         Integer newReservedQuantity = actuallyReservedQuantity + quantityToReserve;
         Integer actualQuantity = product.getQuantity();
 
