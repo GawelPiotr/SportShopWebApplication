@@ -43,17 +43,21 @@ public class TestMain {
         history1.setQuantity(8);
         storeRepository.saveHistoryEntry(history1);
 
-        //setProductQuantity
-        //storeRepository.addProductQuantityById(1,56);
+
+        storeRepository.setProductQuantityById(1, 50);
 
         storeRepository.setReservedById(1, 9);
 
-        //System.out.println(storeRepository.getAllProducts());
+        System.out.println(storeRepository.getAllProducts());
 
-        //System.out.println(storeRepository.getProductByType("Shirt"));
+        System.out.println(storeRepository.getProductByType("Shirt"));
 
-        //System.out.println(storeRepository.getClientByNick("Zenon"));
+        System.out.println(storeRepository.getClientByNick("Zenon"));
 
+        System.out.println(storeRepository.getHistoryByClientId(2));
 
+        System.out.println(storeRepository.getReservedById(1));
+
+        System.out.println(storeRepository.getProductByProductId(1));
     }
 }

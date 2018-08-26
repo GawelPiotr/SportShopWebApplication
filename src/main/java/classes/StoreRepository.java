@@ -7,89 +7,53 @@ import org.hibernate.query.Query;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class StoreRepository implements StoreInterface {
 
+    @Override
     public List<Product> getAllProducts() {
-        Transaction transaction = null;
+
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
+            session.beginTransaction();
             Query<Product> query = session.createQuery("select c from Product c", Product.class);
-            List<Product> list = query.list();
-            transaction.commit();
-            transaction = null;
-            return list;
+            return query.list();
         } catch (Throwable e) {
             e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
         return Collections.emptyList();
     }
 
     @Override
     public List<Product> getProductByType(String type) {
-        Transaction transaction = null;
+
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
+            session.beginTransaction();
             Query<Product> query = session.createQuery("select c from Product c where c.type = :typeName", Product.class);
             query.setParameter("typeName", type);
-            List<Product> list = query.list();
-            transaction.commit();
-            transaction = null;
-            return list;
+            return query.list();
         } catch (Throwable e) {
             e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
         return Collections.emptyList();
     }
 
     @Override
     public List<Product> getProductByClientId(Integer id) {
-        Transaction transaction = null;
-        try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            Query<Product> query = session.createQuery("select c from Product c where c.id = :idName", Product.class);
-            query.setParameter("idName", id);
-            List<Product> list = query.list();
-            transaction.commit();
-            transaction = null;
-            return list;
-        } catch (Throwable e) {
-            e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-        return Collections.emptyList();
+        return null;
     }
 
-    @Override
-    public Client getClientByNick(String nick) {
-        Transaction transaction = null;
+    public Optional<Client> getClientByNick(String nick) {
+
+        Client client = new Client();
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            Query<Client> query = session.createQuery("select c from Client c where c.nick = :nickName", Client.class);
+            Query<Client> query = session.createQuery("select c from Client c where c.nick = :nickName ", Client.class);
             query.setParameter("nickName", nick);
-            Client client = query.getSingleResult();
-            transaction.commit();
-            transaction = null;
-            return client;
+            client = query.getSingleResult();
         } catch (Throwable e) {
             e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
-        return null;
+        return Optional.ofNullable(client);
     }
 
     @Override
@@ -144,13 +108,14 @@ public class StoreRepository implements StoreInterface {
     }
 
     @Override
-    public void addProductQuantityById(Integer productId, Integer quantity) {
+    public void setProductQuantityById(Integer productId, Integer quantity) {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<Product> query = session.createQuery("UPDATE Product SET quantity = :quantityName WHERE productId = :productIdName", Product.class);
+            Query<Product> query = session.createQuery("UPDATE Product c SET c.quantity = :quantityName WHERE c.productId = :productIdName");
             query.setParameter("quantityName", quantity);
             query.setParameter("productIdName", productId);
+            query.executeUpdate();
             transaction.commit();
             transaction = null;
         } catch (Throwable e) {
@@ -167,9 +132,10 @@ public class StoreRepository implements StoreInterface {
         Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<Product> query = session.createQuery("UPDATE Product SET reserved = :reservedValueName WHERE productId = :productIdName", Product.class);
+            Query<Product> query = session.createQuery("UPDATE Product c SET c.reserved = :reservedValueName WHERE c.productId = :productIdName");
             query.setParameter("reservedValueName", reservedValue);
             query.setParameter("productIdName", productId);
+            query.executeUpdate();
             transaction.commit();
             transaction = null;
         } catch (Throwable e) {
@@ -183,23 +149,42 @@ public class StoreRepository implements StoreInterface {
 
     @Override
     public List<History> getHistoryByClientId(Integer clientId) {
-        Transaction transaction = null;
+
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
+            session.beginTransaction();
             Query<History> query = session.createQuery("select c from History c WHERE clientId = :clientIdName", History.class);
             query.setParameter("clientIdName", clientId);
-            List<History> list = query.list();
-            transaction.commit();
-            transaction = null;
-            return list;
+            return query.list();
         } catch (Throwable e) {
             e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
         return Collections.emptyList();
     }
 
+    @Override
+    public Optional<Integer> getReservedById(Integer productId) {
+        Integer reserved = 0;
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            Query<Integer> query = session.createQuery("select c.reserved from Product c WHERE c.productId = :productIdName");
+            query.setParameter("productIdName", productId);
+            reserved = query.getSingleResult();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return Optional.ofNullable(reserved);
+    }
+
+    @Override
+    public Optional<Product> getProductByProductId(Integer productId) {
+        Product product = new Product();
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            Query<Product> query = session.createQuery("select c from Product c where c.productId = :productIdName", Product.class);
+            query.setParameter("productIdName", productId);
+            product = query.getSingleResult();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return Optional.ofNullable(product);
+    }
 }
