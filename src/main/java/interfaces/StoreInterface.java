@@ -6,29 +6,32 @@ import classes.Product;
 
 import java.util.List;
 
+import java.util.Optional;
+
 public interface StoreInterface {
 
-    List<Product> getAllProducts();
+    List<Product> getAllProducts();                                                 //OK
 
-    List<Product> getProductByType(String type);
+    List<Product> getProductByType(String type);                                    //OK
 
-    List<Product> getProductByClientId(Integer id);
+    List<Product> getProductByClientId(Integer id);                                 //FAULT
 
-    Client getClientByNick(String nick);
+    Optional<Client> getClientByNick(String nick);                                  //OK
 
-    void saveClient(Client client);
+    void saveClient(Client client);                                                 //OK
 
-    void saveProduct(Product product);
+    void saveProduct(Product product);                                              //OK
 
-    void saveHistoryEntry(History history);
+    void saveHistoryEntry(History history);                                         //OK
 
-    void addProductQuantityById(Integer productId, Integer quantity);
+    void setProductQuantityById(Integer productId, Integer quantity);               //OK
 
-    void setReservedById(Integer productId, Integer reservedValue);
+    void setReservedById(Integer productId, Integer reservedValue);                 //OK
 
-    List<History> getHistoryByClientId(Integer clientId);
+    List<History> getHistoryByClientId(Integer clientId);                           //OK
 
-    Integer getReservedById(Integer productId);
+    Optional<Integer> getReservedById(Integer productId);                           //OK
 
-    Product getProductById(Integer productId);
+    Optional<Product> getProductByProductId(Integer productId);                     //OK
+
 }
