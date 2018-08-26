@@ -1,8 +1,6 @@
 package servlets;
 
 import classes.BasketEntry;
-import classes.Product;
-import classes.StoreRepository;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,8 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/buy")
-public class buy extends HttpServlet {
+@WebServlet(urlPatterns = "/Buy")
+public class Buy extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,6 +21,7 @@ public class buy extends HttpServlet {
         if ((List<BasketEntry>)req.getSession().getAttribute("basket") != null) {
             basket = (List<BasketEntry>) req.getSession().getAttribute("basket");
         }
+
 
 
 

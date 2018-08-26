@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/basket")
-public class addToBasket extends HttpServlet {
+public class AddToBasket extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

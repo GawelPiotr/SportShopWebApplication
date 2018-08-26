@@ -42,7 +42,10 @@ public class StoreRepository implements StoreInterface {
 
     @Override
     public void saveProduct(Product product) {
-
+        ProductsFactory productsFactory = ProductsFactory.getInstance();
+        productsFactory.getProductList().add(product);
+        Integer listSize = productsFactory.getProductList().size();
+        productsFactory.getProductList().get(listSize-1).setProduct_id(listSize);
     }
 
     @Override

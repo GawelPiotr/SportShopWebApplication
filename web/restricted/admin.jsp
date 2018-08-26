@@ -17,6 +17,7 @@
 <p><a href="/shirts">Shirts</a></p>
 <p><a href="/pants">Pants</a></p>
 <p><a href="/boots">Boots</a></p>
+<p><a href="/logout">Logout</a></p>
 
 <h2>Add new product:</h2>
 <table border="1">
@@ -26,6 +27,7 @@
         <th>Size</th>
         <th>Quantity on store</th>
         <th>Quantity on buy</th>
+        <th></th>
     </tr>
     <tr>
         <form method="post" action="/addProduct">
@@ -41,6 +43,7 @@
             <td><input type="text" name="size"></td>
             <td><input type="text" name="quantity"></td>
             <td><input type="text" name="reserved" value="0"></td>
+            <td><button type="submit">Add</button></td>
         </form>
     </tr>
 </table><br><br>

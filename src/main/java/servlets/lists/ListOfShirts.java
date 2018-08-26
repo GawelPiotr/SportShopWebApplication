@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/admin")
-public class adminList extends HttpServlet {
+@WebServlet(urlPatterns = "/shirts")
+public class ListOfShirts extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StoreRepository storeRepository = new StoreRepository();
-        List<Product> adminList = storeRepository.getAllProducts();
+        List<Product> shirtsList = storeRepository.getProductByType("shirt");
 
-        req.setAttribute("list", adminList);
+        req.setAttribute("list", shirtsList);
 
-        RequestDispatcher dd = req.getRequestDispatcher("/restricted/admin.jsp");
+        RequestDispatcher dd = req.getRequestDispatcher("/index.jsp");
         dd.forward(req,resp);
     }
 }
