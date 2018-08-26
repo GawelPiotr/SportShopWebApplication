@@ -41,7 +41,7 @@
     </tr>
     <c:forEach var="list" items="${requestScope.list}">
     <tr>
-        <td><c:out value="${list.product_id}"></c:out></td>
+        <td><c:out value="${list.productId}"></c:out></td>
         <td><c:out value="${list.type}"></c:out></td>
         <td><c:out value="${list.colour}"></c:out></td>
         <td><c:out value="${list.size}"></c:out></td>
@@ -61,7 +61,7 @@
                         </td>
                     </c:otherwise>
                 </c:choose>
-        <input type="hidden" name="productIdToBuy" value="${list.product_id}">
+        <input type="hidden" name="productIdToBuy" value="${list.productId}">
         </form>
         </td>
     </tr>

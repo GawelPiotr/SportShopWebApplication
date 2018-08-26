@@ -25,9 +25,9 @@ public class AddToBasket extends HttpServlet {
         }
         StoreRepository storeRepository = new StoreRepository();
         Integer productId = Integer.parseInt(req.getParameter("productIdToBuy"));
-        Product product = storeRepository.getProductById(productId);
+        Product product = storeRepository.getProductByProductId(productId).get(); //TODO optional handle
         Integer quantityToReserve = Integer.parseInt(req.getParameter("quantityToBuy"));
-        Integer actuallyReservedQuantity = storeRepository.getReservedById(productId);
+        Integer actuallyReservedQuantity = storeRepository.getReservedById(productId).get(); //TODO optional handle
         Integer newReservedQuantity = actuallyReservedQuantity + quantityToReserve;
         Integer actualQuantity = product.getQuantity();
 

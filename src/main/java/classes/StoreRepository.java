@@ -1,11 +1,6 @@
 package classes;
 
 import interfaces.StoreInterface;
-<<<<<<< HEAD
-
-import java.util.List;
-import java.util.stream.Collectors;
-=======
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -13,7 +8,6 @@ import org.hibernate.query.Query;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
->>>>>>> origin/Daniel
 
 public class StoreRepository implements StoreInterface {
 

@@ -48,16 +48,16 @@ public class TestMain {
 
         storeRepository.setReservedById(1, 9);
 
-        System.out.println(storeRepository.getAllProducts());
-
-        System.out.println(storeRepository.getProductByType("Shirt"));
-
-        System.out.println(storeRepository.getClientByNick("Zenon"));
-
-        System.out.println(storeRepository.getHistoryByClientId(2));
-
-        System.out.println(storeRepository.getReservedById(1));
-
-        System.out.println(storeRepository.getProductByProductId(1));
+        //System.out.println(storeRepository.getAllProducts());
+//
+//        System.out.println(storeRepository.getProductByType("Shirt"));
+//
+//        System.out.println(storeRepository.getClientByNick("Zenon"));
+//
+//        System.out.println(storeRepository.getHistoryByClientId(2));
+//
+//        System.out.println(storeRepository.getReservedById(1));
+//
+//        System.out.println(storeRepository.getProductByProductId(1));
     }
 }

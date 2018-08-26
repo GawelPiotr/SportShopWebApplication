@@ -29,6 +29,13 @@ public class ListOfAllProducts extends HttpServlet {
     private void setAllProductsToVariables(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StoreRepository storeRepository = new StoreRepository();
         List<Product> allProductsList = storeRepository.getAllProducts();
+
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println(allProductsList);
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXX");
+
         req.setAttribute("list", allProductsList);
         req.setAttribute("loggedUserName", req.getRemoteUser());
 

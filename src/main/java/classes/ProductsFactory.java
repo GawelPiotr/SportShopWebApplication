@@ -27,7 +27,7 @@ public class ProductsFactory {
         productList.add(new Product("shirt", "red",38,20,0));
         int counter = 1;
         for (Product product : productList) {
-            product.setProduct_id(counter++);
+            product.setProductId(counter++);
         }
     }
 
