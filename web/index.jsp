@@ -21,6 +21,7 @@
 <p><a href="/pants">Pants</a></p>
 <p><a href="/boots">Boots</a></p>
 <p><a href="/basket.jsp">Basket</a></p>
+<p><a href="/admin">Admin Panel</a></p>
 
 <table border="1">
     <tr>
