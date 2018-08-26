@@ -29,6 +29,8 @@ public interface StoreInterface {
 
     void setReservedById(Integer productId, Integer reservedValue);
 
+    Integer getReservedById(Integer productId);
+
     List<History> getHistoryByClientId(Integer clientId);
 
     Optional<Product> getProductByProductId(Integer productId);

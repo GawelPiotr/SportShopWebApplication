@@ -144,6 +144,11 @@ public class StoreRepository implements StoreInterface {
     }
 
     @Override
+    public Integer getReservedById(Integer productId) {
+        return null;
+    }
+
+    @Override
     public List<History> getHistoryByClientId(Integer clientId) {
         return null;
     }
