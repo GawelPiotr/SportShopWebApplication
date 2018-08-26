@@ -25,11 +25,11 @@ public interface StoreInterface {
 
     void saveHistoryEntry(History history);
 
-    void addProductQuantityById(Integer productId, Integer quantity);
+    void setProductQuantityById(Integer productId, Integer quantity);
 
     void setReservedById(Integer productId, Integer reservedValue);
 
-    Integer getReservedById(Integer productId);
+    Optional<Integer> getReservedById(Integer productId);
 
     List<History> getHistoryByClientId(Integer clientId);
 

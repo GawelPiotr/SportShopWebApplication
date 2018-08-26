@@ -48,7 +48,11 @@ public class Main {
         //System.out.println(storeRepository.getProductByType("Shirt"));
         //System.out.println(storeRepository.getClientByNick("Hiaca"));
 
-        System.out.println(storeRepository.getProductByProductId(1));
+        //System.out.println(storeRepository.getProductByProductId(1));
+
+
+        storeRepository.setReservedById(1, 5);
+        System.out.println(storeRepository.getReservedById(1));
 
     }
 }

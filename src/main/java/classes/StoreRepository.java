@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.print.attribute.standard.PrinterMessageFromOperator;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -15,11 +16,9 @@ public class StoreRepository implements StoreInterface {
 
     public List<Product> getAllProducts() {
         String hqlQuery = "select p from Product p";
-        Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
             Query<Product> query = session.createQuery(hqlQuery, Product.class);
-            List<Product> list = query.list();
-            return list;
+            return query.list();
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -27,43 +26,24 @@ public class StoreRepository implements StoreInterface {
     }
 
     public List<Product> getProductByType(String type) {
-        Transaction transaction = null;
+
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
             Query<Product> query = session.createQuery("select p from Product p where p.type = :typeName", Product.class);
             query.setParameter("typeName", type);
-            List<Product> list = query.list();
-
-            transaction.commit();
-            transaction = null;
-            return list;
+            return query.list();
         } catch (Throwable e) {
             e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
         return Collections.emptyList();
     }
 
     public List<Product> getProductByClientId(Integer clientId) {
-        Transaction transaction = null;
         try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
             Query<Product> query = session.createQuery("select p from History h join Product p where h.clientId = :myClientId ", Product.class);
             query.setParameter("myClientId", clientId);
-            List<Product> list = query.list();
-
-            transaction.commit();
-            transaction = null;
-            return list;
+            return query.list();
         } catch (Throwable e) {
             e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
         return Collections.emptyList();
     }
@@ -134,24 +114,71 @@ public class StoreRepository implements StoreInterface {
     }
 
 
-    public void addProductQuantityById(Integer id_product, Integer quantity) {
+    public void setProductQuantityById(Integer productId, Integer quantity) {
+        Transaction transaction = null;
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Query<Product> query = session.createQuery("UPDATE Product SET quantity = :quantityName WHERE productId = :productIdName", Product.class);
+            query.setParameter("quantityName", quantity);
+            query.setParameter("productIdName", productId);
+            transaction.commit();
+            transaction = null;
+        } catch (Throwable e) {
+            e.printStackTrace();
+        } finally {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
 
     }
 
     @Override
     public void setReservedById(Integer productId, Integer reservedValue) {
-
+        Transaction transaction = null;
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("UPDATE Product SET reserved = :reservedValueName WHERE productId = :productIdName");
+            query.setParameter("reservedValueName", reservedValue);
+            query.setParameter("productIdName", productId);
+            query.executeUpdate();
+            transaction.commit();
+            transaction = null;
+        } catch (Throwable e) {
+            e.printStackTrace();
+        } finally {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
     @Override
-    public Integer getReservedById(Integer productId) {
-        return null;
+    public Optional<Integer> getReservedById(Integer productId) {
+        Integer reserved = 0;
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            Query<Integer> query = session.createQuery("select p.reserved from Product p where p.productId = :productIdName ", Integer.class);
+            query.setParameter("productIdName", productId);
+            reserved = query.getSingleResult();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return Optional.ofNullable(reserved);
     }
 
     @Override
     public List<History> getHistoryByClientId(Integer clientId) {
-        return null;
+
+        try (Session session = SessionManager.getSessionFactory().openSession()) {
+            Query<History> query = session.createQuery("select c from History c WHERE clientId = :clientIdName", History.class);
+            query.setParameter("clientIdName", clientId);
+            return query.list();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
+
 
     @Override
     public Optional<Product> getProductByProductId(Integer productId) {
@@ -162,6 +189,6 @@ public class StoreRepository implements StoreInterface {
         } catch (Throwable e) {
             e.printStackTrace();
         }
-      return Optional.ofNullable(product);
+        return Optional.ofNullable(product);
     }
 }
