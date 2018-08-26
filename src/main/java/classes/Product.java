@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer product_id;
+    private Integer productId;
     @Column
     private String type;
     @Column
@@ -31,12 +31,12 @@ public class Product {
     public Product() {
     }
 
-    public Integer getProduct_id() {
-        return product_id;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+    public void setProductId(Integer product_id) {
+        this.productId = product_id;
     }
 
 
@@ -85,7 +85,7 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(product_id, product.product_id) &&
+        return Objects.equals(productId, product.productId) &&
                 Objects.equals(type, product.type) &&
                 Objects.equals(colour, product.colour) &&
                 Objects.equals(size, product.size) &&
@@ -96,13 +96,13 @@ public class Product {
     @Override
     public int hashCode() {
 
-        return Objects.hash(product_id, type, colour, size, quantity, reserved);
+        return Objects.hash(productId, type, colour, size, quantity, reserved);
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "product_id=" + product_id +
+                "product_id=" + productId +
                 ", type='" + type + '\'' +
                 ", colour='" + colour + '\'' +
                 ", size=" + size +

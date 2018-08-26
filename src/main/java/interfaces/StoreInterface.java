@@ -2,18 +2,35 @@ package interfaces;
 
 
 import classes.Client;
+import classes.History;
 import classes.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface StoreInterface {
 
-    List<Product> getAll();
-    List<Product> getByType(String type);
-    List<Product> getProductByClientId(Integer id_client );
-    Client getClientByNick(String nick);
+
+    List<Product> getAllProducts();
+
+    List<Product> getProductByType(String type);
+
+    List<Product> getProductByClientId(Integer clientId);
+
+    Optional<Client> getClientByNick(String nick);
+
     void saveClient(Client client);
+
     void saveProduct(Product product);
-    void historyEntry(Integer id_product, Integer id_client);
-    void addProductQuantityById(Integer id_product, Integer quantity);
+
+    void saveHistoryEntry(History history);
+
+    void addProductQuantityById(Integer productId, Integer quantity);
+
+    void setReservedById(Integer productId, Integer reservedValue);
+
+    List<History> getHistoryByClientId(Integer clientId);
+
+    Optional<Product> getProductByProductId(Integer productId);
+
 }

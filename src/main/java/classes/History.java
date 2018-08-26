@@ -1,7 +1,6 @@
 package classes;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -10,48 +9,48 @@ public class History {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer transactions_id;
+    private Integer transactionsId;
     @Column
-    private Integer client_id;
+    private Integer clientId;
     @Column
-    private Integer product_id;
+    private Integer productId;
     @Column
     private Integer quantity;
     @OneToOne
-    @JoinColumn(columnDefinition = "product_id")
+    @JoinColumn(columnDefinition = "productId")
     private Product bought;
 
     public History(Integer client_id, Integer product_id, Integer quantity) {
-        this.client_id = client_id;
-        this.product_id = product_id;
+        this.clientId = client_id;
+        this.productId = product_id;
         this.quantity = quantity;
     }
 
     public History() {
     }
 
-    public Integer getTransactions_id() {
-        return transactions_id;
+    public Integer getTransactionsId() {
+        return transactionsId;
     }
 
-    public void setTransactions_id(Integer transactions_id) {
-        this.transactions_id = transactions_id;
+    public void setTransactionsId(Integer transactions_id) {
+        this.transactionsId = transactions_id;
     }
 
-    public Integer getClient_id() {
-        return client_id;
+    public Integer getClientId() {
+        return clientId;
     }
 
-    public void setClient_id(Integer client_id) {
-        this.client_id = client_id;
+    public void setClientId(Integer client_id) {
+        this.clientId = client_id;
     }
 
-    public Integer getProduct_id() {
-        return product_id;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+    public void setProductId(Integer product_id) {
+        this.productId = product_id;
     }
 
     public Integer getQuantity() {
@@ -67,24 +66,24 @@ public class History {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         History history = (History) o;
-        return Objects.equals(transactions_id, history.transactions_id) &&
-                Objects.equals(client_id, history.client_id) &&
-                Objects.equals(product_id, history.product_id) &&
+        return Objects.equals(transactionsId, history.transactionsId) &&
+                Objects.equals(clientId, history.clientId) &&
+                Objects.equals(productId, history.productId) &&
                 Objects.equals(quantity, history.quantity);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(transactions_id, client_id, product_id, quantity);
+        return Objects.hash(transactionsId, clientId, productId, quantity);
     }
 
     @Override
     public String toString() {
         return "History{" +
-                "transactions_id=" + transactions_id +
-                ", client_id=" + client_id +
-                ", product_id=" + product_id +
+                "transactionsId=" + transactionsId +
+                ", clientId=" + clientId +
+                ", productId=" + productId +
                 ", quantity=" + quantity +
                 '}';
     }

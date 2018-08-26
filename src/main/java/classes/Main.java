@@ -1,86 +1,54 @@
 package classes;
 
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.hibernate.tool.schema.TargetType;
-
-import java.io.File;
-import java.util.EnumSet;
-
 public class Main {
-    private static final String SCRIPT_FILE = "SCHEMA.sql";
+
 
 
     public static void main(String[] args) {
 
-        String configFileName = "hibernate.cfg.xml";
-
-        // Create the ServiceRegistry from hibernate-xxx.cfg.xml
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()//
-                .configure(configFileName).build();
-
-        // Create a metadata sources using the specified service registry.
-        Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
-
-        SchemaExport export = getSchemaExport();
-
-        System.out.println("Drop Database...");
-        // Drop Database
-        dropDataBase(export, metadata);
-
-        System.out.println("Create Database...");
-        // Create tables
-        createDataBase(export, metadata);
-
-
-    }
-
-    private static SchemaExport getSchemaExport() {
-
-        SchemaExport export = new SchemaExport();
-        // Script file.
-        File outputFile = new File(SCRIPT_FILE);
-        String outputFilePath = outputFile.getAbsolutePath();
-
-        System.out.println("Export file: " + outputFilePath);
-
-        export.setDelimiter(";");
-        export.setOutputFile(outputFilePath);
-
-        // No Stop if Error
-        export.setHaltOnError(false);
-        //
-        return export;
-    }
-
-    public static void dropDataBase(SchemaExport export, Metadata metadata) {
-        // TargetType.DATABASE - Execute on Databse
-        // TargetType.SCRIPT - Write Script file.
-        // TargetType.STDOUT - Write log to Console.
-        EnumSet<TargetType> targetTypes = EnumSet.of(TargetType.DATABASE, TargetType.SCRIPT, TargetType.STDOUT);
-
-        export.drop(targetTypes, metadata);
-    }
-
-    public static void createDataBase(SchemaExport export, Metadata metadata) {
-        // TargetType.DATABASE - Execute on Databse
-        // TargetType.SCRIPT - Write Script file.
-        // TargetType.STDOUT - Write log to Console.
-
-        EnumSet<TargetType> targetTypes = EnumSet.of(TargetType.DATABASE, TargetType.SCRIPT, TargetType.STDOUT);
-
-        SchemaExport.Action action = SchemaExport.Action.CREATE;
-        //
-        export.execute(targetTypes, action, metadata);
-
-        System.out.println("Export OK");
-
-        Product product = new Product();
+        Product product1 = new Product();
+        Product product2 = new Product();
+        Client client1 = new Client();
+        Client client2 = new Client();
+        History history1 = new History();
+        History history2 = new History();
         StoreRepository storeRepository = new StoreRepository();
-        System.out.println(storeRepository.getAll());
+
+
+        //saveProduct1
+        product1.setType("Boots");
+        product1.setColour("Red");
+        product1.setSize(42);
+        product1.setQuantity(20);
+        product1.setReserved(0);
+        storeRepository.saveProduct(product1);
+
+        //saveProduct2
+        product2.setType("Shirt");
+        product2.setColour("Blue");
+        product2.setSize(40);
+        product2.setQuantity(18);
+        product2.setReserved(0);
+        storeRepository.saveProduct(product2);
+        //saveClient1
+        client1.setNick("Zenon");
+        storeRepository.saveClient(client1);
+        //saveClient2
+        client2.setNick("Hiaca");
+        storeRepository.saveClient(client2);
+
+        //saveHistoryEntry
+        history1.setProductId(1);
+        history1.setClientId(2);
+        history1.setQuantity(8);
+        storeRepository.saveHistoryEntry(history1);
+
+        //System.out.println(storeRepository.getAllProducts());
+
+        //System.out.println(storeRepository.getProductByType("Shirt"));
+        //System.out.println(storeRepository.getClientByNick("Hiaca"));
+
+        System.out.println(storeRepository.getProductByProductId(1));
 
     }
 }
