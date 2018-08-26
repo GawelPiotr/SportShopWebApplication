@@ -28,4 +28,7 @@ public interface StoreInterface {
 
     List<History> getHistoryByClientId(Integer clientId);
 
+    Integer getReservedById(Integer productId);
+
+    Product getProductById(Integer productId);
 }

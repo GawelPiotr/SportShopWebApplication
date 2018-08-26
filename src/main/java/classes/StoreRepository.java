@@ -1,33 +1,94 @@
-package main.java.classes;
+package classes;
 
-import main.java.interfaces.StoreInterface;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+import interfaces.StoreInterface;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StoreRepository implements StoreInterface {
 
-    public List<Product> getAll() {
-        Transaction transaction = null;
-        try (Session session = SessionManager.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            Query<Product> query = session.createQuery("select c from Product c where c.address.city = :cityName", Product.class);
-            query.setParameter("cityName", city);
-            List<Product> list = query.list();
-            transaction.commit();
-            transaction = null;
-            return list;
-        } catch (Throwable e) {
-            e.printStackTrace();
-        } finally {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        }
-        return Collections.emptyList();
+    @Override
+    public List<Product> getAllProducts() {
+        ProductsFactory productsFactory = ProductsFactory.getInstance();
+        List<Product> tempList = productsFactory.getProductList();
+        return tempList;
     }
 
+    @Override
+    public List<Product> getProductByType(String type) {
+        ProductsFactory productsFactory = ProductsFactory.getInstance();
+        List<Product> tempList = productsFactory
+                .getProductList();
+
+        tempList = tempList.stream().filter(t -> type.equals(t.getType())).collect(Collectors.toList());
+
+        return tempList;
+    }
+
+    @Override
+    public List<Product> getProductByClientId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public Client getClientByNick(String nick) {
+        return null;
+    }
+
+    @Override
+    public void saveClient(Client client) {
+
+    }
+
+    @Override
+    public void saveProduct(Product product) {
+
+    }
+
+    @Override
+    public void saveHistoryEntry(History history) {
+
+    }
+
+    @Override
+    public void addProductQuantityById(Integer id_product, Integer quantity) {
+
+    }
+
+    @Override
+    public void setReservedById(Integer product_id, Integer reservedValue) {
+        ProductsFactory productsFactory = ProductsFactory.getInstance();
+        for (Product product : productsFactory.getProductList()) {
+            if (product_id.equals(product.getProduct_id())){
+                product.setReserved(reservedValue);
+            }
+        }
+    }
+
+    @Override
+    public List<History> getHistoryByClientId(Integer clientId) {
+        return null;
+    }
+
+    @Override
+    public Integer getReservedById(Integer productId) {
+        ProductsFactory productsFactory = ProductsFactory.getInstance();
+        for (Product product : productsFactory.getProductList()) {
+            if (productId.equals(product.getProduct_id())){
+                return product.getReserved();
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public Product getProductById(Integer productId) {
+        ProductsFactory productsFactory = ProductsFactory.getInstance();
+        for (Product product : productsFactory.getProductList()) {
+            if (productId.equals(product.getProduct_id())){
+                return product;
+            }
+        }
+        return null;
+    }
 }

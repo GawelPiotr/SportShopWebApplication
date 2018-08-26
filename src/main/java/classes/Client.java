@@ -12,14 +12,9 @@ public class Client {
     @Column
     private String nick;
 
-
     public Client(String nick) {
         this.nick = nick;
     }
-
-    public Client() {
-    }
-
 
     public Integer getId() {
         return client_id;

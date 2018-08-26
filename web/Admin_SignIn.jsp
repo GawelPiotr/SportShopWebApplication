@@ -2,7 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <title>SportShopWebApplication</title>
+    <div class="jumbotron text-center">
+        <img class="grafiki "src="grafiki/logo.jpg"/>
+        <h1>Your Online Sport Shop </h1>
+    </div>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -41,35 +46,37 @@
             .row.content {height:auto;}
         }
     </style>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.jsp">Best Sport Shop</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/shirts">Shirts</a></li>
+                    <li><a href="/pants">Pants</a></li>
+                    <li><a href="/boots">Boots</a> </li>
+                    <li><a href="Contact.jsp">Contact</a> </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="basket.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Basket </a> </li>
+                    <li><a href="Sign_in.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.jsp">Best Sport Shop</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index.jsp">Home</a></li>
-                <li><a href="Shirts.jsp">Shirts</a></li>
-                <li><a href="Pants.jsp">Pants</a></li>
-                <li><a href="Boots.jsp">Boots</a></li>
-                <li><a href="Contact.jsp">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="Sign_in.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="Sign_out.jsp"></span> Sign in</a></li>
 
-            </ul>
-        </div>
-    </div>
-</nav>
 <form method="Post" action="j_security_check">
     <table>
         <tr>
@@ -89,6 +96,15 @@
         </tr>
     </table>
 </form>
+<footer class="container-fluid text-center">
+    <table>
+        <td><li>Sport Shop Web Application create by: </li></td>
+        <td><li>Tomasz Prasny</li></td>
+        <td><li>Diana Janusczyk</li></td>
+        <td><li>Daniel Czarnocki</li></td>
+        <td><li>Piotr Gaweł</li></td>
+    </table>
+</footer>
 </body>
 </html>
 

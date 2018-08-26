@@ -8,9 +8,6 @@ import java.util.Objects;
 @Table
 public class Product {
 
-    public Product() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer product_id;
@@ -40,6 +37,7 @@ public class Product {
     public void setProduct_id(Integer product_id) {
         this.product_id = product_id;
     }
+
 
     public String getType() {
         return type;
